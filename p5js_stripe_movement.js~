@@ -1,0 +1,29 @@
+// a testbed for animating stripes to move over the screen
+
+let width = 10;
+let pitch = 60;
+
+let step = pitch;
+let speed = 1;  // animation speed in step per frame
+
+function setup() {
+  createCanvas(600, 600);
+  noStroke();
+    startTime = millis();
+
+    // define speed and colors here
+}
+
+function draw() {
+  background(20);
+  stroke(80);
+
+  // Draw static grid lines
+  for (let i = 0; i <= cols; i++) line(i * spacing, 0, i * spacing, height);
+  for (let j = 0; j <= rows; j++) line(0, j * spacing, width, j * spacing);
+
+  // Compute transition progress 0 → 1 over time
+  let elapsed = (millis() - startTime) / 1000.0;
+  let transition = constrain(elapsed / transitionTime, 0, 1);
+
+}
