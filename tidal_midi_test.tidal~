@@ -1,0 +1,18 @@
+-- superDirt config and testing
+MIDIClient.init;
+
+MIDIClient.destinations;
+
+~midiOut = MIDIOut.newByName("TidalToHydra", "TidalToHydra"); // substitute your own device here
+
+~dirt.soundLibrary.addMIDI(\hydra, ~midiOut);
+
+
+~midiOut.latency = 0;
+~midiOut.noteOn(0, 60, 100);  // should light up the IAC driver port
+~midiOut.noteOff(0, 60, 0);
+
+
+
+-- actual tidal MIDI to Hydra
+d1 $ n "60" # s "hydra" # sustain 0.2
