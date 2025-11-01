@@ -1,20 +1,22 @@
+
+
 p5 = new P5()
 
 // geometric params
-let lineWidth = 10
+let lineWidth = 5
 
 let baseWidth = lineWidth;    // average stripe width
 let pitch = lineWidth;
 let spacing = baseWidth + pitch;
 let itr = 0;
-let step = 5;          // pixels per frame
-let speed = 0.05;       // multiplier for overall speed
+let step = 2;          // pixels per frame
+let speed = 0.25;       // multiplier for overall speed
 let modDensity = 0.1;  // strength of width modulation = density of grid (higher = more dense)
 let modSpeed = 0.9;      // divider for speed of modulation (lower = faster)
 
 
 // COLORS
-let bg_color = '#0000t0'
+let bg_color = 'white'
 let accent_color = '#ff8080'
 let fill_color = '#214478';
 
@@ -76,7 +78,7 @@ p5.drawBreathingCircles = function (x, y, minDia, strokeW, speed, pauseRatio = 0
 
   // circle system
   let maxCircles = 9
-  let pitch = 30
+  let pitch = 40
   let systemGrowth = 0.5 - 0.5 * p5.cos(phase * p5.PI)
   let diameters = []
   diameters[0] = minDia
@@ -96,7 +98,7 @@ p5.drawBreathingCircles = function (x, y, minDia, strokeW, speed, pauseRatio = 0
 
 // --- P5 SETUP ---
 p5.setup = () => {
-  p5.createCanvas(p5.width, p5.height)
+  p5.createCanvas(innerWindow.width, inner.Window.height)
   p5.noFill()
   p5.frameRate(60)
 }
@@ -148,10 +150,9 @@ p5.draw = () => {
 s0.init({ src: p5.canvas })
 //src(s0).out()
 
-// Slowly decay trigger to 0 over time
-setInterval(() => trigger *= 1.0, 150);
-
 // here we can use some hydra magic to introduce weird effects - with or without MIDI trigger
-// src(s0).modulate(noise(1), () => trigger * 0.1).out()
-src(s0).modulate(noise(1), osc(2)).out()
+src(s0).modulate(noise(1), () => trigger * 0.1).out()
+
+src(s0).modulate(noise(4), osc(2)).out()
+
 

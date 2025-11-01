@@ -42,6 +42,7 @@ d1 $ note "60 ~ 60 ~ 60"
 
 let pat = "0 1 1 0 1 0 1 0"
 
-d2 $ slow 1 $ struct pat $ n "60" # s "hydra" # sustain 0.5
+
+d2 $ slow 4 $ struct pat $ n "60" # s "hydra" # sustain 1
 
 d3 $ struct pat $ s "bd sd" # gain 0.99
